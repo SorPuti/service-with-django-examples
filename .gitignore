@@ -1,0 +1,5 @@
+env/
+collections.json
+db.sqlite3
+db.sqlite3.bak
+setup_psycopg.ps1
