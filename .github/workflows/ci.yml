@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ production/v2025.268.0, developer ]
+  pull_request:
+    branches: [ production/v2025.268.0, developer ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run migrations
+        env:
+          # use sqlite for CI by default
+          DJANGO_SETTINGS_MODULE: myproject.settings
+        run: |
+          python manage.py migrate --noinput
+
+      - name: Run Django tests
+        env:
+          DJANGO_SETTINGS_MODULE: myproject.settings
+        run: |
+          python manage.py test --verbosity=2
+
+      - name: Collect simple logs (optional)
+        if: failure()
+        run: |
+          echo "=== Showing last 200 lines of Django test output (if any) ==="
+          tail -n 200 $(pwd || echo .) || true

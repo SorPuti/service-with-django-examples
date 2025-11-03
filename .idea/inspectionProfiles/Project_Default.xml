@@ -1,0 +1,35 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="8">
+            <item index="0" class="java.lang.String" itemvalue="bcrypt" />
+            <item index="1" class="java.lang.String" itemvalue="sqlalchemy" />
+            <item index="2" class="java.lang.String" itemvalue="whatsapp-python" />
+            <item index="3" class="java.lang.String" itemvalue="fastapi" />
+            <item index="4" class="java.lang.String" itemvalue="dependency-injector" />
+            <item index="5" class="java.lang.String" itemvalue="contextvars" />
+            <item index="6" class="java.lang.String" itemvalue="pypdf" />
+            <item index="7" class="java.lang.String" itemvalue="redis" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="fastapi.applications.FastAPI.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
