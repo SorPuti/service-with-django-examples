@@ -3,6 +3,7 @@ from django.conf import settings
 
 
 class OnrModel(models.Model):
+    objects = models.Manager()
     STATUS_DRAFT = "draft"
     STATUS_ACTIVE = "active"
     STATUS_ARCHIVED = "archived"

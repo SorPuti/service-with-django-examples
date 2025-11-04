@@ -11,14 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         # expose only safe fields for profile editing
-        fields = (
-            "id",
-            "username",
-            "email",
-            "first_name",
-            "last_name",
-            "test_field"
-        )
+        exclude = ("password",)
         read_only_fields = ("id",)
 
 
