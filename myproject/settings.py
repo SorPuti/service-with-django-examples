@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "onr",
     # Suggestions app: sistema de sugestões com workflow de aprovação
     "suggestions",
+    "accounts"
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "myproject.wsgi.application"
 
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
