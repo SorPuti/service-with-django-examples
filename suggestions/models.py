@@ -18,7 +18,7 @@ class Suggestion(models.Model):
     - approved_by / approved_at: controle de quem aprovou e quando
     - votes_count: contador cache para consultas rápidas
     """
-
+    objects = models.Manager()
     STATUS_PENDING = "pending"
     STATUS_APPROVED = "approved"
     STATUS_REJECTED = "rejected"
@@ -77,7 +77,7 @@ class Suggestion(models.Model):
 
 class SuggestionComment(models.Model):
     """Comentários em uma sugestão. Permite discussões antes/depois da aprovação."""
-
+    objects = models.Manager()
     suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
@@ -92,7 +92,7 @@ class SuggestionComment(models.Model):
 
 class SuggestionVote(models.Model):
     """Votos para uma sugestão. Cada usuário pode votar uma vez (unique constraint)."""
-
+    objects = models.Manager()
     suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE, related_name="votes")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -109,7 +109,7 @@ class SuggestionAuditLog(models.Model):
 
     Armazena eventos como create/update/approve/reject com payload mínimo.
     """
-
+    objects = models.Manager()
     suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE, related_name="audit_logs")
     actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
     action = models.CharField(max_length=50)

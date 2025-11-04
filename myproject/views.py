@@ -1,7 +1,7 @@
 import random
 from django.http import HttpResponse, HttpRequest
 from django.contrib.auth import get_user_model
-from rest_framework import serializers, permissions, generics
+from rest_framework import serializers, permissions, generics, viewsets
 
 
 User = get_user_model()
@@ -17,8 +17,10 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
+            "test_field"
         )
         read_only_fields = ("id",)
+
 
 
 class UserProfileView(generics.RetrieveUpdateAPIView):
